@@ -1,0 +1,8 @@
+{
+  "name": "Dino Planet",
+  "description": "Dino Planet: Jurassic Survival - Prehistoric dinosaur exploration, survival, evolution, and sanctuary adventure.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,2164 @@
+For your Android game, I recommend building Dino Planet: Jurassic Survival as a complete, polished, native Kotlin game with a strong visual identity, immersive gameplay, dinosaur collection, evolution, exploration, survival, crafting, missions, and progression.
+
+The prompt below is designed for an AI coding tool such as Gemini, Android Studio AI, or another coding agent. It emphasizes game design, UI/UX, gameplay systems, and working features, rather than just creating a static interface.
+
+Since this is a Kotlin Android game, the specification uses Kotlin + Jetpack Compose for menus and HUDs, with a native Android-compatible 2D game engine such as LibGDX for gameplay rendering. This hybrid architecture is a practical starting point for a feature-rich mobile game without requiring Unity.
+
+# Complete AI development prompt — Dino Planet: Jurassic Survival
+
+Copy the entire prompt below into your AI coding tool. It instructs the AI to build a feature-rich Android game, including the game screen, main menu, dinosaur models, progression, inventory, quests, survival systems, animations, and Google Play preparation.
+
+# MASTER DEVELOPMENT PROMPT: DINO PLANET — JURASSIC SURVIVAL
+
+## Native Kotlin Android Dinosaur Adventure Game
+
+Act as a senior Android game developer, Kotlin architect, professional mobile game designer, 3D/2D game systems engineer, UI/UX designer, gameplay programmer, animation designer, and game product manager.
+
+Build a complete, polished, highly engaging Android dinosaur adventure and survival game named **Dino Planet: Jurassic Survival**.
+
+The game must feel like a professionally designed commercial mobile game, with beautiful prehistoric environments, responsive controls, polished menus, satisfying progression, dinosaur collection, evolution, exploration, survival, crafting, missions, achievements, and meaningful rewards.
+
+Do not create merely a prototype UI, static mockup, or collection of nonfunctional buttons. Implement real gameplay systems, persistent progression, working interactions, and a cohesive visual experience.
+
+The game must be designed for Android smartphones, including budget and mid-range devices.
+
+---
+
+# 1. GAME VISION AND IDENTITY
+
+Game title: Dino Planet: Jurassic Survival
+
+Genre:
+
+- Dinosaur adventure
+- Survival simulation
+- Exploration
+- Creature collection
+- Evolution and progression
+- Crafting and base building
+- Light action and combat
+- Offline single-player adventure
+
+Platform: Android
+
+Primary language: Kotlin
+
+Interface framework: Jetpack Compose
+
+Gameplay rendering: Use LibGDX with Kotlin for the real-time 2D gameplay layer. Use Android-compatible graphics and animation systems. Keep the gameplay renderer separate from the Compose interface.
+
+Architecture: Modular, maintainable, testable Android application.
+
+Game orientation:
+
+- Landscape for exploration and action gameplay.
+- Portrait is acceptable for standalone collection, inventory, rewards, or menus only if it does not disrupt the overall experience. Prefer landscape throughout for consistency.
+
+Target audience: Dinosaur enthusiasts, adventure players, casual gamers, and players who enjoy exploration and progression.
+
+Primary objective:\
+Create an exciting prehistoric world where the player begins as a young dinosaur, explores a mysterious island, survives dangerous environments, collects resources, rescues eggs, discovers new species, grows stronger, and builds a thriving dinosaur sanctuary before an approaching extinction event.
+
+Core gameplay promise:\
+**Explore a living prehistoric world. Grow your dinosaur. Discover legendary species. Build your sanctuary. Survive extinction.**
+
+The game must have its own visual identity and original interface design. Do not copy the exact artwork, branding, or UI of existing commercial games.
+
+# 2. TECHNICAL ARCHITECTURE
+
+Use a clean, modular project structure.
+
+Required technologies:
+
+- Kotlin for application and gameplay logic.
+- Jetpack Compose and Material 3 for native menus and interface overlays.
+- LibGDX for real-time 2D gameplay, sprites, terrain, animation, collision, particles, and game rendering.
+- Kotlin Coroutines and Flow for asynchronous operations and reactive state.
+- Room for structured local persistence.
+- DataStore for lightweight settings and preferences.
+- Navigation Compose for navigation between native application screens.
+- Kotlin serialization or another suitable serialization solution for configuration and save data.
+- Android lifecycle-aware components.
+- Gradle Kotlin DSL.
+
+Use stable, mutually compatible dependency versions available in the development environment. Do not invent library versions or leave the project with unresolved dependencies.
+
+Create a clear boundary between the Android interface and game engine.
+
+Suggested package structure:
+
+com.dinoplanet.survival
+
+- app/
+- core/
+- core/model/
+- core/database/
+- core/repository/
+- core/audio/
+- core/settings/
+- core/navigation/
+- game/engine/
+- game/world/
+- game/entities/
+- game/dinosaurs/
+- game/ai/
+- game/combat/
+- game/survival/
+- game/inventory/
+- game/crafting/
+- game/quests/
+- game/progression/
+- game/sanctuary/
+- game/weather/
+- game/economy/
+- game/save/
+- ui/theme/
+- ui/components/
+- ui/screens/
+- ui/menus/
+- ui/hud/
+- ui/collection/
+- ui/inventory/
+- ui/quests/
+- ui/settings/
+- ui/tutorial/
+- testing/
+
+Architecture requirements:
+
+1. Keep game rules independent of composable UI functions.
+2. Keep dinosaur attributes and item definitions data-driven.
+3. Implement repositories for inventory, player progression, settings, quests, and sanctuary data.
+4. Use a single authoritative game state for each gameplay session.
+5. Separate persistent player progress from temporary session state.
+6. Implement explicit pause, resume, save, and restore behavior.
+7. Ensure game loops do not run on the main UI thread.
+8. Use lifecycle-aware audio, rendering, and resource disposal.
+9. Avoid giant Activities, giant composables, and monolithic game classes.
+10. Use dependency injection or a simple maintainable dependency provider.
+11. Provide useful error handling and diagnostic logging in debug builds.
+12. Add unit tests for essential game rules.
+
+Important implementation rule:\
+Do not attempt to build a full 3D engine from scratch in Kotlin. For the initial release, implement attractive 2D or 2.5D gameplay with layered scenery, animated sprites, parallax, lighting effects, particles, and depth-like movement. Keep the architecture ready for future 3D expansion.
+
+If a genuine 3D game becomes a requirement, propose a separate compatible rendering architecture rather than pretending that 2D sprites are a fully 3D environment.
+
+# 3. ART DIRECTION AND VISUAL DESIGN
+
+Create a premium-quality stylized prehistoric world.
+
+The game should feel colorful, mysterious, cinematic, adventurous, and friendly enough for a broad mobile audience.
+
+Visual references in terms of general qualities:
+
+- Rich prehistoric jungle environments.
+- Colorful animated dinosaur characters.
+- Beautiful atmospheric lighting.
+- Detailed but readable terrain.
+- Smooth character animation.
+- Clean modern mobile game interfaces.
+- High-quality collectible cards and reward screens.
+- Strong environmental storytelling.
+
+Do not make the game look like a plain productivity app or a generic administration dashboard.
+
+## Color palette
+
+Use a cohesive design system.
+
+Primary jungle green: #39B86A
+
+Deep forest: #12372B
+
+Dark background: #101A19
+
+Volcanic orange: #FF793D
+
+Golden reward: #FFC857
+
+Sky blue: #5AC8FA
+
+Cream surface: #F4F0E5
+
+Danger red: #F04F52
+
+Muted text: #A8B8AE
+
+Use gradients, translucent overlays, subtle highlights, layered shadows, and contextual colors.
+
+Use colors consistently for health, stamina, hunger, experience, rarity, crafting, danger, and rewards.
+
+## Typography
+
+Use a bold, distinctive display style for major headings.
+
+Use highly readable typography for gameplay labels, item descriptions, counters, and settings.
+
+Keep text readable on smaller Android screens.
+
+Establish a type scale for:
+
+- Main title.
+- Screen title.
+- Section heading.
+- Body text.
+- Supporting description.
+- Small labels.
+- Numeric counters.
+
+Avoid excessive all-caps text, tiny labels, and long paragraphs over gameplay.
+
+## Shapes and components
+
+Use:
+
+- Rounded cards.
+- Strong silhouettes.
+- Illustrated section headers.
+- Large touch targets.
+- Distinctive dinosaur icons.
+- Progress bars with clear labels.
+- Animated reward panels.
+- Themed buttons with clear pressed and disabled states.
+- Subtle particles and glow effects for rare rewards.
+- Bottom navigation for secondary menu screens where appropriate.
+
+Avoid excessive glassmorphism, excessive gradients, clutter, and generic template styling.
+
+## Game environment art
+
+Create a visually rich environment using layered background artwork and parallax movement.
+
+Include:
+
+- Foreground grass and rocks.
+- Midground plants and trees.
+- Background mountains.
+- Distant waterfalls.
+- Fog layers.
+- Floating dust particles.
+- Fireflies at night.
+- Moving clouds.
+- Water reflections where practical.
+- Animated foliage.
+- Environmental shadows.
+- Distinct lighting for sunrise, daytime, sunset, and nighttime.
+
+Use original assets, properly licensed asset packs, or generated placeholder artwork that can be replaced later. Never depend on copyrighted game assets without permission.
+
+When final artwork is unavailable, use polished temporary assets and document how to replace them. Do not leave missing textures or blank image areas.
+
+# 4. SPLASH SCREEN AND FIRST LAUNCH
+
+Create a cinematic splash screen.
+
+Visual composition:
+
+- A dramatic prehistoric mountain silhouette.
+- A glowing sun behind the mountains.
+- A dinosaur silhouette crossing the landscape.
+- Floating particles and subtle environmental motion.
+- The title DINO PLANET.
+- Subtitle JURASSIC SURVIVAL.
+- A small loading indicator.
+
+The screen should feel immersive and premium.
+
+Keep the splash short and do not force players to wait through unnecessary animation.
+
+On first launch:
+
+1. Load essential resources.
+2. Initialize the local database.
+3. Create a new local player profile.
+4. Load settings.
+5. Start the introductory tutorial.
+
+Do not request unnecessary permissions or force account registration.
+
+# 5. MAIN MENU DESIGN
+
+Build a beautiful landscape-oriented main menu.
+
+Background:\
+A prehistoric valley with animated foliage, distant dinosaurs, drifting clouds, mountains, and a moving river.
+
+Place a large dinosaur character on the right side or center-right. It should idle, blink, breathe, and occasionally look around.
+
+On the left side, display the game title and a clear primary PLAY button.
+
+Top bar:
+
+- Player level.
+- Experience progress.
+- Fossil currency.
+- Crystal currency.
+- Settings.
+- Player profile.
+
+Main actions:
+
+- Continue Adventure.
+- New Adventure, with confirmation if it will replace existing progress.
+- Dinosaur Collection.
+- Sanctuary.
+- Daily Missions.
+- Achievements.
+- Settings.
+- Credits.
+
+Show a small daily reward notification when one is available.
+
+The main menu must use a clear hierarchy. The player should immediately understand how to start playing.
+
+Add subtle button animation, a short sound on selection, and a visible press state.
+
+Do not make every action equally prominent. PLAY must remain the primary action.
+
+All displayed currencies, levels, rewards, and notifications must reflect actual game state.
+
+# 6. PLAYER PROFILE AND PROGRESSION
+
+Create a local player profile.
+
+Fields:
+
+- Player identifier generated locally.
+- Display name.
+- Player level.
+- Total experience.
+- Current experience.
+- Total play time.
+- Dinosaurs discovered.
+- Dinosaurs hatched.
+- Eggs rescued.
+- Missions completed.
+- Resources collected.
+- Regions explored.
+- Achievements completed.
+- Current sanctuary level.
+- Current story chapter.
+- Last reward claim date.
+
+Player progression:
+
+- Gain XP from exploration.
+- Complete quests.
+- Collect rare discoveries.
+- Defeat or escape dangerous encounters.
+- Rescue eggs.
+- Upgrade the sanctuary.
+- Discover new regions.
+
+Level-up flow:
+
+1. Trigger a level-up event.
+2. Pause dangerous gameplay transitions safely.
+3. Show a rewarding animation.
+4. Display unlocked features.
+5. Grant the configured rewards.
+6. Update the level and XP.
+7. Resume the game.
+
+Prevent duplicate level-up rewards after saving or restoring a session.
+
+# 7. CORE GAMEPLAY AND PLAYER CONTROLS
+
+Create a responsive real-time survival adventure.
+
+The player begins as a baby Velociraptor in a small prehistoric clearing.
+
+The camera follows the dinosaur smoothly.
+
+Gameplay controls:
+
+- Virtual joystick on the bottom-left.
+- Jump button on the bottom-right.
+- Interact button when near an object.
+- Sprint button.
+- Contextual attack or special ability button.
+- Optional dodge button.
+- Pause button.
+- Map button.
+
+Adapt button placement for left-handed players in settings.
+
+Make all touch controls configurable within reasonable limits.
+
+## Movement
+
+Implement:
+
+- Walking.
+- Running.
+- Sprinting.
+- Jumping.
+- Landing.
+- Turning.
+- Idle animation.
+- Direction-aware movement.
+- Collision with terrain and obstacles.
+- Movement speed modifiers.
+- Stamina consumption while sprinting.
+- Stamina regeneration.
+- Slower movement when injured, if appropriate.
+
+Use acceleration and deceleration to avoid robotic movement.
+
+Prevent the dinosaur from moving through walls, rocks, trees, or other solid obstacles.
+
+## Contextual interaction
+
+When close to an object, show an interaction prompt.
+
+Possible interactions:
+
+- Collect berries.
+- Collect wood.
+- Collect stones.
+- Drink water.
+- Inspect fossils.
+- Open supply chests.
+- Rescue eggs.
+- Activate ancient ruins.
+- Harvest safe plants.
+- Enter caves.
+- Talk to friendly creatures or characters.
+- Rest at a shelter.
+
+Hide the interaction button when no valid target is nearby.
+
+Prevent collecting the same resource repeatedly without the proper respawn or regeneration rules.
+
+# 8. PLAYER SURVIVAL SYSTEM
+
+Create four principal survival indicators.
+
+## Health
+
+Health decreases when the player receives damage or encounters environmental hazards.
+
+Implement:
+
+- Damage calculation.
+- Brief damage feedback.
+- Health regeneration only when supported by defined game rules.
+- Healing items.
+- Resting at a safe shelter.
+- Temporary invulnerability after being hit.
+- A clear low-health warning.
+
+## Hunger
+
+Hunger decreases gradually while playing.
+
+Restore hunger with edible items.
+
+Different foods should restore different amounts.
+
+Do not allow hunger values to go below zero or above the configured maximum.
+
+If hunger reaches a critical level, apply a gentle gameplay penalty rather than an unfair instant failure.
+
+## Stamina
+
+Stamina is consumed by sprinting, dodging, and selected abilities.
+
+Regenerate it while resting or moving normally.
+
+Show clear visual feedback when stamina is insufficient.
+
+## Hydration
+
+Hydration decreases over time, with faster depletion in hot regions.
+
+Restore hydration at rivers, lakes, springs, or with collected water items.
+
+Provide understandable warnings before hydration becomes critical.
+
+## Survival HUD
+
+Place health, hunger, hydration, stamina, and XP in a compact HUD.
+
+Use readable icons, subtle animation, and color-coded urgency.
+
+The HUD must never cover important interaction targets.
+
+Provide accessibility options to enlarge the HUD.
+
+# 9. DINOSAUR GROWTH AND EVOLUTION
+
+Create a complete growth system.
+
+Growth stages:
+
+1. Egg.
+2. Hatchling.
+3. Juvenile.
+4. Adolescent.
+5. Adult.
+6. Elder or legendary form, if supported.
+
+Growth should be based on experience, feeding, milestones, and story progression rather than requiring real-world waiting periods.
+
+Each growth stage should change:
+
+- Character scale.
+- Appearance.
+- Animation.
+- Attribute values.
+- Ability availability.
+- Exploration capability.
+- Unlockable interactions.
+
+Create an evolution screen with:
+
+- Current dinosaur preview.
+- Growth stage.
+- XP progress.
+- Health.
+- Speed.
+- Defense.
+- Attack strength.
+- Stamina.
+- Special abilities.
+- Evolution requirements.
+- Next-stage preview.
+
+When evolution occurs:
+
+- Play an animation.
+- Display the visual transformation.
+- Apply the configured attribute changes.
+- Unlock abilities when appropriate.
+- Save progress.
+
+Do not make growth upgrades cosmetic only. They should have meaningful gameplay effects.
+
+Balance progression so the player cannot become overwhelmingly powerful in the first few minutes.
+
+# 10. DINOSAUR SPECIES AND COLLECTION
+
+Create a collectible dinosaur database.
+
+Start with at least 12 configured species, with the architecture supporting more.
+
+Initial roster:
+
+1. Velociraptor — fast movement and stealth.
+2. Tyrannosaurus rex — powerful attacks and intimidation.
+3. Triceratops — defense and charging.
+4. Ankylosaurus — armor and rock-breaking.
+5. Stegosaurus — defensive tail ability.
+6. Parasaurolophus — enhanced detection and communication.
+7. Brachiosaurus — high reach and resource access.
+8. Pteranodon — aerial exploration in designated areas.
+9. Spinosaurus — water-adapted exploration.
+10. Pachycephalosaurus — headbutt and obstacle breaking.
+11. Dilophosaurus — agile movement and a special ranged ability.
+12. Allosaurus — balanced predator abilities.
+
+Treat the roster as a fictional game database, not a scientific claim that all these species lived together at the same time.
+
+Each species should have:
+
+- Unique identifier.
+- Name.
+- Description.
+- Portrait.
+- Sprite or animation asset.
+- Rarity.
+- Habitat.
+- Base attributes.
+- Growth stages.
+- Special abilities.
+- Unlock requirements.
+- Food preferences.
+- Discovery information.
+- Collection status.
+- Upgrade level.
+
+Collection screen:
+
+- Grid of dinosaur cards.
+- Search.
+- Filter by species type.
+- Filter by rarity.
+- Sort by discovery, level, or name.
+- Locked and unlocked states.
+- Discovery progress.
+- Detailed species page.
+- Ability descriptions.
+- Attribute comparison.
+- Favorite dinosaur option.
+
+Use clear rarity tiers:
+
+- Common.
+- Uncommon.
+- Rare.
+- Epic.
+- Legendary.
+
+Rarity should communicate collection difficulty and visual presentation, not guarantee unfair gameplay advantages.
+
+Selecting a dinosaur should open a detailed animated preview screen.
+
+Use actual local assets. Do not show random placeholder images that do not match the selected species.
+
+# 11. EGGS, HATCHING, AND BREEDING
+
+Create an egg discovery and hatching system.
+
+Egg types:
+
+- Common eggs.
+- Rare eggs.
+- Ancient eggs.
+- Biome-specific eggs.
+- Legendary story eggs.
+
+Egg acquisition:
+
+- Exploration.
+- Rescue missions.
+- Hidden nests.
+- Cave discoveries.
+- Boss encounter rewards.
+- Story progression.
+
+Egg screen:
+
+- Egg illustration.
+- Species information, if known.
+- Rarity.
+- Rescue status.
+- Hatching requirements.
+- Incubation progress.
+- Hatch button when requirements are satisfied.
+
+Hatching should be playable without forcing users to wait for real-world timers.
+
+Optional incubation activities can include collecting food, warming the nest, or completing a short mini-game.
+
+Create a hatching animation with:
+
+- A gently shaking egg.
+- Small cracks.
+- Particles.
+- A reveal animation.
+- Species name.
+- Rarity.
+- Rewards.
+- A button to visit the dinosaur collection.
+
+Optional advanced feature:\
+Allow compatible owned dinosaurs to produce offspring using a configurable genetic inheritance system.
+
+Breeding must be a later-phase feature. Do not block the initial release on it.
+
+# 12. OPEN-WORLD MAP AND EXPLORATION
+
+Create a world divided into connected regions.
+
+Initial biomes:
+
+1. Verdant Valley.
+2. Crystal Caves.
+3. Ember Volcano.
+4. Ancient Forest.
+5. Misty Swampland.
+6. Frozen Highlands.
+7. Golden Desert.
+8. Coastal Cliffs.
+9. Forgotten Ruins.
+10. Extinction Crater.
+
+Each biome must have a distinct visual palette, resource distribution, environmental conditions, wildlife, landmarks, and exploration rewards.
+
+## World map
+
+Create an illustrated map that resembles a prehistoric explorer's map.
+
+Features:
+
+- Region boundaries.
+- Player location.
+- Discovered landmarks.
+- Locked areas.
+- Quest markers.
+- Resource hints.
+- Fast-travel points unlocked through progression.
+- Danger level.
+- Region completion.
+- Collectible discovery markers.
+
+Do not display every hidden collectible from the beginning.
+
+## Exploration mechanics
+
+Include:
+
+- Fog of war.
+- Discoverable landmarks.
+- Hidden caves.
+- Secret paths.
+- Fossil deposits.
+- Ancient ruins.
+- Environmental puzzles.
+- Treasure caches.
+- Waterfalls.
+- Natural bridges.
+- Abandoned camps.
+- Rare nesting grounds.
+
+Reward exploration with XP, fossils, resources, lore entries, and new dinosaur discoveries.
+
+Build the initial world as a compact playable region. Expand to additional regions as content becomes available.
+
+Do not falsely present a collection of disconnected screens as a seamless open world.
+
+# 13. DAY, NIGHT, AND WEATHER
+
+Implement a configurable world-time system.
+
+Day phases:
+
+- Dawn.
+- Morning.
+- Noon.
+- Sunset.
+- Night.
+
+Visual changes:
+
+- Sky color.
+- Ambient brightness.
+- Shadow intensity.
+- Fireflies.
+- Fog.
+- Nighttime glow effects.
+- Background ambience.
+
+Weather types:
+
+- Clear.
+- Cloudy.
+- Rain.
+- Heavy rain.
+- Thunderstorm.
+- Heatwave.
+- Volcanic ash.
+- Fog.
+
+Weather must affect gameplay in defined ways.
+
+Examples:
+
+- Rain can refill selected water sources.
+- Fog reduces visibility.
+- Heat increases hydration consumption.
+- Heavy rain reduces visibility and modifies movement in selected terrain.
+- Volcanic ash signals an environmental hazard.
+
+Keep weather deterministic or seeded for reproducible testing.
+
+Avoid expensive lighting calculations on low-end devices. Use layered artwork and inexpensive effects when appropriate.
+
+# 14. ENVIRONMENTAL DISASTERS AND EXTINCTION EVENTS
+
+Make environmental danger a central feature.
+
+Disasters:
+
+- Volcanic eruptions.
+- Lava flows.
+- Meteor showers.
+- Falling rocks.
+- Floods.
+- Wildfires.
+- Toxic gas in selected caves.
+- Powerful storms.
+- Collapsing bridges.
+- Regional predator migrations.
+
+Each disaster should include:
+
+1. A recognizable warning.
+2. A readable danger indicator.
+3. A chance to respond.
+4. A clear hazard zone.
+5. A safe route or shelter.
+6. A recovery or reward phase.
+
+For example, a volcano might rumble, the sky might turn orange, and ash might appear before lava reaches a designated section of the map.
+
+Disasters must not randomly destroy permanent player progress or make missions impossible.
+
+Create scripted extinction events for story missions and optional survival challenges for replayability.
+
+# 15. WILDLIFE AND DYNAMIC DINOSAUR AI
+
+Implement several AI behaviors.
+
+AI states:
+
+- Idle.
+- Roaming.
+- Searching.
+- Eating.
+- Fleeing.
+- Chasing.
+- Attacking.
+- Defending.
+- Sleeping.
+- Returning to habitat.
+
+Prey dinosaurs should usually flee from larger predators.
+
+Predators should investigate nearby movement, chase when appropriate, and abandon a pursuit when the target escapes or the chase becomes unreasonable.
+
+Neutral dinosaurs should react to proximity without automatically attacking.
+
+Implement:
+
+- Detection radius.
+- Line-of-sight approximation.
+- Detection cooldown.
+- Movement limits.
+- Habitat boundaries.
+- Attack range.
+- Cooldowns.
+- Escape behavior.
+- Collision avoidance.
+- Difficulty scaling.
+
+Keep AI computationally inexpensive.
+
+Use simple state machines for the initial release. Avoid unnecessary complex pathfinding for every background creature.
+
+Include friendly, neutral, and hostile species.
+
+Wildlife should make the environment feel alive without overwhelming the player with constant combat.
+
+# 16. COMBAT AND SPECIAL ABILITIES
+
+Combat is optional during exploration and should not dominate every interaction.
+
+Actions:
+
+- Basic attack.
+- Heavy attack.
+- Dodge.
+- Sprint escape.
+- Special ability.
+- Environmental interaction.
+- Stun or temporary stagger.
+- Defensive response.
+
+Abilities should be species-specific.
+
+Examples:
+
+- Velociraptor: quick strike.
+- Triceratops: charging defense.
+- Ankylosaurus: heavy tail strike.
+- Stegosaurus: sweeping tail attack.
+- Tyrannosaurus rex: powerful bite.
+- Pteranodon: short aerial traversal in supported regions.
+
+Each ability needs:
+
+- Activation input.
+- Animation.
+- Cooldown.
+- Stamina cost where appropriate.
+- Hit detection.
+- Damage or effect.
+- Feedback.
+- Failure state when unavailable.
+
+Create health indicators for significant enemies.
+
+Avoid excessive gore. Use stylized effects, dust, motion, and readable hit feedback.
+
+Allow players to escape combat rather than requiring them to defeat every predator.
+
+# 17. INVENTORY AND RESOURCE MANAGEMENT
+
+Create a fully functional inventory.
+
+Resource categories:
+
+- Food.
+- Water.
+- Crafting materials.
+- Fossils.
+- Eggs.
+- Healing items.
+- Quest objects.
+- Collectibles.
+- Special artifacts.
+
+Initial resource database:
+
+- Berries.
+- Medicinal herbs.
+- Mushrooms.
+- Clean water.
+- Wood.
+- Stone.
+- Fiber.
+- Feathers.
+- Bones.
+- Fossil fragments.
+- Crystals.
+- Metal scraps.
+- Ancient amber.
+
+Each item needs:
+
+- Unique identifier.
+- Display name.
+- Icon.
+- Description.
+- Category.
+- Stack limit.
+- Rarity.
+- Weight or capacity cost if weight is implemented.
+- Sell or exchange value if applicable.
+- Crafting usage.
+- Consumption effect if applicable.
+
+Inventory screen:
+
+- Category tabs.
+- Item grid.
+- Item count.
+- Item details.
+- Use button.
+- Equip button when applicable.
+- Discard option with confirmation.
+- Sorting.
+- Search.
+- Capacity indicator.
+
+Ensure inventory changes are reflected immediately in the interface.
+
+Prevent negative quantities, invalid item duplication, and consuming an item twice due to rapid taps.
+
+When inventory is full, display a helpful explanation and prevent silent item loss.
+
+# 18. CRAFTING AND RESOURCE ECONOMY
+
+Build a working crafting system.
+
+Craftable items:
+
+- Basic shelter.
+- Campfire.
+- Storage basket.
+- Water container.
+- Healing food.
+- Bandage equivalent for fictional dinosaur injuries.
+- Reinforced shelter.
+- Nesting area.
+- Decorative plants.
+- Protective fence.
+- Resource storage.
+- Incubation nest.
+- Weather shelter.
+
+Each recipe defines:
+
+- Required resources.
+- Crafting duration, if used.
+- Unlock requirement.
+- Output quantity.
+- Required station.
+- Optional player-level requirement.
+
+For the first release, avoid real-world waiting timers. Crafting can finish immediately after confirmation or use a short animation.
+
+Crafting screen:
+
+- Recipe cards.
+- Item icon.
+- Required materials.
+- Available quantities.
+- Missing material indicators.
+- Craft button.
+- Output preview.
+- Unlock information.
+
+The craft button must only work when requirements are met.
+
+Use transactions or equivalent consistency controls so material deduction and item creation occur together.
+
+# 19. SANCTUARY AND BASE BUILDING
+
+Create a personal dinosaur sanctuary.
+
+The sanctuary is a safe location where players manage their resources, rescued eggs, and unlocked dinosaurs.
+
+Buildable structures:
+
+- Basic shelter.
+- Dinosaur nests.
+- Incubation station.
+- Storage.
+- Feeding station.
+- Water station.
+- Decorative plants.
+- Fences.
+- Observation tower.
+- Fossil display.
+- Research station.
+- Healing area.
+- Ancient artifact display.
+- Expanded habitat.
+
+Base-building interface:
+
+- Top-down or isometric-style illustrated plot.
+- Build mode.
+- Structure selection panel.
+- Placement preview.
+- Placement confirmation.
+- Rotation where supported.
+- Upgrade button.
+- Resource requirement panel.
+- Remove or relocate option where appropriate.
+- Structure information.
+- Sanctuary level.
+
+For the initial version, implement a grid-based building system. Snap objects to grid cells and prevent invalid overlapping placements.
+
+Structures should be real saved entities, not decorative buttons.
+
+Upgrades should unlock useful capabilities such as storage capacity, new recipes, or additional habitat slots.
+
+Add sanctuary customization:
+
+- Ground decorations.
+- Trees and flowers.
+- Stone paths.
+- Nest designs.
+- Lighting.
+- Cosmetic structures.
+- Color themes.
+
+The sanctuary should become visually richer as the player progresses.
+
+# 20. QUESTS, MISSIONS, AND STORY
+
+Create a complete quest system.
+
+Quest categories:
+
+- Main story.
+- Exploration.
+- Survival.
+- Resource collection.
+- Dinosaur discovery.
+- Rescue.
+- Crafting.
+- Sanctuary upgrades.
+- Daily missions.
+- Achievements.
+
+Each quest should define:
+
+- Identifier.
+- Title.
+- Description.
+- Objective.
+- Target count.
+- Current progress.
+- Prerequisites.
+- Completion conditions.
+- Rewards.
+- Claim state.
+- Quest category.
+
+Example early quests:
+
+Mission 1: First Footsteps
+
+- Move through the starting clearing.
+- Learn the movement controls.
+- Reward: XP.
+
+Mission 2: Find Food
+
+- Collect berries.
+- Restore hunger.
+- Reward: XP and food.
+
+Mission 3: A Safe Place
+
+- Collect wood and stone.
+- Build a basic shelter.
+- Reward: crafting materials.
+
+Mission 4: The Lost Egg
+
+- Follow footprints to a hidden nest.
+- Avoid a territorial predator.
+- Rescue the egg.
+- Reward: egg discovery and XP.
+
+Mission 5: Ancient Footprints
+
+- Investigate fossil traces.
+- Discover a landmark.
+- Reward: fossils and map progress.
+
+Mission 6: Warning from the Mountain
+
+- Observe signs of volcanic activity.
+- Reach a designated safe zone.
+- Reward: story progress.
+
+Mission 7: First Hatchling
+
+- Meet the incubation requirements.
+- Hatch a new dinosaur.
+- Reward: collection progress.
+
+Mission 8: A Growing Sanctuary
+
+- Build an additional habitat.
+- Upgrade storage.
+- Reward: new crafting recipes.
+
+## Story chapters
+
+Chapter 1: A New Beginning.
+
+Chapter 2: Secrets of the Valley.
+
+Chapter 3: The Ancient Forest.
+
+Chapter 4: Beneath the Volcano.
+
+Chapter 5: The Forgotten Civilization.
+
+Chapter 6: Signs of Extinction.
+
+Chapter 7: The Great Escape.
+
+Chapter 8: A New World.
+
+Build the first chapter completely. Additional chapters can be implemented progressively.
+
+Do not show unfinished chapters as playable content. Mark future chapters as locked or unavailable.
+
+# 21. QUEST TRACKER AND JOURNAL
+
+Create a journal containing:
+
+- Active quests.
+- Completed quests.
+- Discovered species.
+- Collected fossils.
+- Biome information.
+- Lore entries.
+- Major events.
+- Survival records.
+- Story milestones.
+
+The active quest tracker should display only a few useful objectives.
+
+Players should be able to pin a quest.
+
+Quest progress must update automatically when the corresponding game event occurs.
+
+Use event-based updates instead of scanning every quest on every frame.
+
+Completing an objective should provide a small visual and audio confirmation.
+
+Quest rewards must be claimable exactly once.
+
+# 22. ACHIEVEMENTS AND COLLECTION REWARDS
+
+Create an achievement system.
+
+Example achievements:
+
+- First Steps: Finish the movement tutorial.
+- Berry Hunter: Collect 50 berries.
+- Explorer: Discover five landmarks.
+- Egg Protector: Rescue five eggs.
+- Fossil Finder: Collect 100 fossil fragments.
+- Sanctuary Keeper: Build five structures.
+- Dino Collector: Discover six species.
+- Night Explorer: Explore a region at night.
+- Storm Survivor: Finish a storm challenge.
+- Ancient Secrets: Discover a hidden ruin.
+- Extinction Survivor: Complete the main survival chapter.
+
+Achievement tiers:
+
+- Bronze.
+- Silver.
+- Gold.
+- Legendary.
+
+Each achievement stores progress and completion state.
+
+Provide an achievement screen with:
+
+- Categories.
+- Progress indicators.
+- Locked and unlocked achievements.
+- Reward previews.
+- Completed achievement details.
+
+Rewards can include XP, fossils, decorations, titles, and cosmetic items.
+
+# 23. DAILY REWARDS AND REPLAYABILITY
+
+Implement optional daily rewards.
+
+Example reward cycle:
+
+- Day 1: Basic food.
+- Day 2: Crafting materials.
+- Day 3: Fossil fragments.
+- Day 4: Cosmetic decoration.
+- Day 5: Rare resources.
+- Day 6: Egg-related reward.
+- Day 7: Special cosmetic or collection reward.
+
+Requirements:
+
+- Use local date handling.
+- Prevent multiple claims on the same eligible day.
+- Handle timezone changes reasonably.
+- Never punish players harshly for missing a day.
+- Do not require notifications.
+- Do not require an online account.
+
+Add a daily mission board with a small number of objectives generated from supported gameplay actions.
+
+For a fully offline game, use local daily eligibility rather than pretending to have a secure online calendar.
+
+Do not create deceptive countdowns or fake limited-time offers.
+
+# 24. MINI-GAMES
+
+Create several small optional mini-games.
+
+## Fossil excavation
+
+- Reveal buried fossil pieces.
+- Tap or brush selected areas.
+- Avoid damaging fragile sections.
+- Complete a fossil.
+- Reward the player with a collection entry.
+
+## Egg rescue
+
+- Find a safe route to a nest.
+- Avoid environmental hazards.
+- Return the egg to a safe area.
+
+## Footprint tracking
+
+- Follow clues.
+- Identify the correct direction.
+- Discover a hidden dinosaur or resource cache.
+
+## Ancient mechanism puzzle
+
+- Rotate symbols or align pieces.
+- Open a hidden room.
+- Discover lore or rare materials.
+
+## Feeding challenge
+
+- Select suitable foods for a species.
+- Complete a short timed or untimed activity.
+- Receive a defined reward.
+
+Make each mini-game functional and self-contained.
+
+Do not implement mini-game cards that lead nowhere.
+
+Prioritize fossil excavation and footprint tracking for the first release.
+
+# 25. MAP, COMPASS, AND DISCOVERY UI
+
+Implement:
+
+- A compact minimap.
+- A full-screen illustrated map.
+- Player direction.
+- Quest markers.
+- Discovered landmarks.
+- Region names.
+- Map legend.
+- Fog-of-war overlay.
+- Safe-zone indicators.
+- Optional compass direction.
+
+The minimap should update when the player moves.
+
+Do not draw a fake map unrelated to the actual playable world.
+
+For the initial small region, use a predefined world map with coordinates that match the playable level.
+
+# 26. AUDIO AND MUSIC
+
+Implement a configurable audio system.
+
+Sound categories:
+
+- Background music.
+- Ambient nature.
+- Footsteps.
+- Dinosaur vocalizations.
+- Collecting items.
+- Menu interaction.
+- Level-up.
+- Hatching.
+- Combat.
+- Environmental danger.
+- Mission completion.
+- Reward collection.
+
+Music themes:
+
+- Main menu.
+- Exploration.
+- Danger.
+- Sanctuary.
+- Discovery.
+- Major story event.
+
+Requirements:
+
+- Independent music and sound-effect volume controls.
+- Mute toggles.
+- Proper audio cleanup.
+- Pause and resume handling.
+- Avoid overlapping identical sound effects.
+- Avoid playing music continuously when the application is suspended.
+
+Use properly licensed audio assets or generated placeholder sounds. Keep the game functional when sound files are missing.
+
+# 27. SETTINGS AND ACCESSIBILITY
+
+Build a complete settings screen.
+
+Gameplay settings:
+
+- Control sensitivity.
+- Joystick size.
+- Left-handed layout.
+- Camera follow strength.
+- Vibration toggle.
+- Auto-pickup toggle.
+- Tutorial replay.
+- Damage feedback options.
+
+Graphics settings:
+
+- Low.
+- Medium.
+- High.
+- Particle intensity.
+- Background effects.
+- Screen shake.
+- Optional reduced-motion mode.
+
+Audio settings:
+
+- Music volume.
+- Sound-effects volume.
+- Ambient volume.
+- Master mute.
+
+Accessibility:
+
+- HUD scaling.
+- High-contrast interface.
+- Text scaling.
+- Color-independent warning indicators.
+- Reduced flashing.
+- Reduced screen shake.
+- Remappable supported controls.
+- Clear descriptions for icons.
+- Adjustable camera sensitivity.
+
+System options:
+
+- Language selection where translations exist.
+- Privacy information.
+- Credits.
+- Save information.
+- Reset progress with a strong confirmation.
+- Version information.
+
+Settings must persist after the application closes.
+
+# 28. PAUSE MENU AND GAME OVER
+
+Pause menu:
+
+- Resume.
+- Map.
+- Inventory.
+- Quest journal.
+- Settings.
+- Return to sanctuary.
+- Return to main menu.
+
+Pause all relevant game timers and gameplay updates when paused.
+
+Do not pause necessary platform lifecycle handling or save operations.
+
+Game-over handling:
+
+- Display a clear result.
+- Explain what happened.
+- Offer a fair recovery or restart option.
+- Preserve earned permanent progress according to game rules.
+- Prevent duplicate rewards.
+- Do not delete the save automatically.
+
+For the initial game, use checkpoint-based recovery instead of a punishing survival loop that forces players to repeat large sections.
+
+# 29. SAVE SYSTEM AND OFFLINE MODE
+
+The game must work offline after installation.
+
+Persist:
+
+- Player profile.
+- Current level.
+- XP.
+- Current location.
+- Health and survival values.
+- Inventory.
+- Discovered regions.
+- Dinosaur collection.
+- Dinosaur growth stages.
+- Eggs and hatching state.
+- Sanctuary structures.
+- Quest progress.
+- Achievements.
+- Daily reward eligibility.
+- Settings.
+- Tutorial completion.
+- Game statistics.
+
+Use Room for structured data and DataStore for appropriate settings.
+
+Save at important checkpoints:
+
+- Completing a quest.
+- Collecting significant rewards.
+- Hatching a dinosaur.
+- Upgrading the sanctuary.
+- Completing a region.
+- Entering a safe zone.
+- Pausing or leaving gameplay.
+
+Avoid writing to disk every frame.
+
+Use transactions for operations involving multiple related records.
+
+Provide a safe save migration strategy for future game versions.
+
+If a save is corrupt, handle the error gracefully. Do not silently overwrite the only existing save without a recovery strategy.
+
+Include a local save version number and schema migration approach.
+
+# 30. GAME ECONOMY AND OPTIONAL MONETIZATION
+
+The game should be fun without payment.
+
+Currencies:
+
+- Fossils: earned through exploration and missions.
+- Crystals: optional premium-style currency, but initially earnable through gameplay.
+
+Use a balanced economy.
+
+Do not create unlimited resource generation through repeated taps or claimable rewards.
+
+Monetization can be added only after the core game is complete.
+
+Potential future options:
+
+- Optional rewarded ads.
+- Cosmetic dinosaur skins.
+- Decorative sanctuary themes.
+- Optional ad removal.
+- Cosmetic bundles.
+
+Never interrupt essential gameplay with forced ads.
+
+Do not sell essential survival necessities in a way that makes the free game unfair.
+
+Do not include gambling, paid random loot boxes, deceptive purchase buttons, or fake purchase flows.
+
+Do not pretend a purchase succeeded when no valid billing integration exists.
+
+If Google Play Billing is added later:
+
+- Use the supported billing library.
+- Verify purchase state.
+- Acknowledge purchases properly.
+- Restore eligible purchases.
+- Handle cancellations and errors.
+- Follow Google Play billing and policy requirements.
+
+If advertising is added later:
+
+- Use a supported advertising SDK.
+- Provide appropriate consent and privacy disclosures.
+- Avoid displaying ads during active danger or critical gameplay.
+- Respect child-safety requirements if the game is directed to children.
+
+For the first version, focus on gameplay rather than monetization SDK integration.
+
+# 31. GRAPHICS PERFORMANCE AND MEMORY
+
+Target smooth gameplay on a range of Android phones.
+
+Performance requirements:
+
+- Avoid allocations inside frequently executed game-loop code.
+- Reuse particle and entity objects where practical.
+- Use sprite atlases.
+- Scale textures appropriately.
+- Avoid unnecessarily large textures.
+- Limit simultaneous ambient creatures.
+- Use simple collision shapes.
+- Reduce particle count on low graphics settings.
+- Dispose of graphics resources correctly.
+- Avoid blocking the main thread.
+- Prevent repeated loading of identical assets.
+- Handle orientation changes and lifecycle events safely.
+- Prevent audio, renderer, and coroutine leaks.
+
+Aim for 60 FPS on supported devices, with a reasonable lower-performance mode on weaker hardware.
+
+Use a frame-rate-independent update loop.
+
+Separate update logic from rendering.
+
+Use fixed or bounded time steps for important simulation systems where appropriate.
+
+Do not promise a particular FPS on every device.
+
+Add a developer-only performance overlay showing:
+
+- FPS.
+- Frame time.
+- Active entities.
+- Memory-related diagnostic information where available.
+- Current biome.
+- Current player coordinates.
+- Save status.
+
+Keep diagnostic information hidden in production builds.
+
+# 32. ART AND ASSET PIPELINE
+
+Create an organized asset pipeline.
+
+Suggested directories:
+
+assets/
+
+- sprites/
+- dinosaurs/
+- dinosaurs/portraits/
+- dinosaurs/animations/
+- environments/
+- biomes/
+- items/
+- eggs/
+- ui/
+- particles/
+- audio/music/
+- audio/sfx/
+- maps/
+- fonts/
+
+Create a manifest documenting:
+
+- Asset filename.
+- Purpose.
+- Dimensions.
+- Animation frames.
+- License or source.
+- Associated species or item.
+- Replacement instructions.
+
+Use a consistent art style and coherent character proportions.
+
+Every dinosaur portrait must match its species.
+
+Every collectible icon must match the item definition.
+
+Do not use emoji as a replacement for all game artwork.
+
+Emoji can be used for temporary debugging or simple placeholders, but final game screens must use a coherent set of icons and illustrations.
+
+# 33. MAIN SCREEN VISUAL COMPOSITION
+
+Implement the following layout precisely.
+
+Landscape main menu:
+
+TOP LEFT:
+
+- Small player avatar.
+- Player name.
+- Level badge.
+- XP progress bar.
+
+TOP RIGHT:
+
+- Fossil counter.
+- Crystal counter.
+- Settings icon.
+
+CENTER:
+
+- Large illustrated dinosaur.
+- Animated prehistoric valley.
+- Floating atmospheric elements.
+- Optional dinosaur idle animation.
+
+BOTTOM LEFT:
+
+- Daily reward preview.
+- Small mission notification.
+
+BOTTOM CENTER:
+
+- Large PLAY / CONTINUE button.
+- Current story chapter.
+
+BOTTOM RIGHT:
+
+- Dinosaur Collection.
+- Sanctuary.
+- Missions.
+
+Keep enough negative space around the main dinosaur.
+
+Use safe-area insets and responsive positioning.
+
+On smaller screens, simplify secondary controls instead of squeezing everything together.
+
+# 34. IN-GAME HUD COMPOSITION
+
+LANDSCAPE GAMEPLAY:
+
+TOP LEFT:
+
+- Health bar.
+- Hunger bar.
+- Hydration bar.
+- Stamina bar.
+
+TOP CENTER:
+
+- Current biome.
+- Current objective.
+
+TOP RIGHT:
+
+- Pause.
+- Map.
+- Optional compact inventory indicator.
+
+BOTTOM LEFT:
+
+- Virtual joystick.
+
+BOTTOM RIGHT:
+
+- Jump.
+- Interact.
+- Sprint.
+- Contextual ability.
+
+CENTER:
+
+- Playable dinosaur.
+- Environmental scene.
+- Contextual prompts.
+
+IMPORTANT:
+
+- Keep the dinosaur visible.
+- Do not overlap the joystick and action buttons.
+- Do not cover mission-critical objects with permanent HUD panels.
+- Use a compact layout.
+- Fade nonessential HUD elements when appropriate.
+- Support multiple screen sizes and display cutouts.
+
+# 35. DINOSAUR DETAIL SCREEN
+
+Create a premium dinosaur detail screen.
+
+Include:
+
+- Large animated character preview.
+- Species name.
+- Rarity.
+- Discovery date or milestone.
+- Growth stage.
+- Level and XP.
+- Health.
+- Speed.
+- Defense.
+- Attack.
+- Stamina.
+- Special abilities.
+- Habitat preference.
+- Favorite foods.
+- Discovery notes.
+- Upgrade action.
+- Favorite toggle.
+- Evolution progress.
+
+Display locked species with silhouettes or subdued illustrations and clear unlock hints.
+
+Do not reveal every secret location or every undiscovered species automatically.
+
+Use a clear information hierarchy and visually distinct attribute indicators.
+
+# 36. REWARD AND DISCOVERY ANIMATIONS
+
+Implement polished, short reward animations for:
+
+- Level-ups.
+- Dinosaur discoveries.
+- Hatching.
+- Rare fossil collection.
+- Achievement completion.
+- Story milestones.
+- Sanctuary upgrades.
+
+Use scale transitions, particles, subtle glow, and readable reward summaries.
+
+Animations must:
+
+- Avoid blocking gameplay unnecessarily.
+- Be skippable where appropriate.
+- Respect reduced-motion settings.
+- Not repeatedly trigger when a screen recomposes.
+- Avoid duplicating rewards when reopened.
+
+The reward screen must display actual rewards granted by the game logic.
+
+# 37. TUTORIAL AND ONBOARDING
+
+Create an interactive first-time tutorial.
+
+Step 1:\
+Introduce the baby dinosaur and the prehistoric valley.
+
+Step 2:\
+Teach movement with a joystick.
+
+Step 3:\
+Teach collecting berries.
+
+Step 4:\
+Teach hunger and health indicators.
+
+Step 5:\
+Introduce a safe interaction.
+
+Step 6:\
+Teach gathering wood or stone.
+
+Step 7:\
+Build a simple shelter.
+
+Step 8:\
+Introduce the first quest.
+
+Step 9:\
+Show the map and discovery system.
+
+Step 10:\
+Finish with a meaningful story event and unlock the main gameplay loop.
+
+Requirements:
+
+- One instruction at a time.
+- Contextual highlighting.
+- Clear skip option.
+- Pause the tutorial safely when necessary.
+- Store tutorial completion.
+- Allow replay through settings.
+- Do not show tutorial overlays every time the player opens the game.
+
+# 38. LOCALIZATION AND TEXT MANAGEMENT
+
+Keep all player-facing text in resource files or a centralized localization system.
+
+Do not hardcode interface text throughout gameplay logic.
+
+Prepare the architecture for:
+
+- English.
+- Nepali.
+- Hindi.
+- Additional languages later.
+
+Ensure layouts support text expansion.
+
+Use meaningful string identifiers.
+
+Keep numbers, currency values, dates, and plural forms localized where appropriate.
+
+The first release may ship with English only, but adding another language should not require rewriting gameplay code.
+
+# 39. SECURITY, PRIVACY, AND PLAY STORE READINESS
+
+The initial game should not require:
+
+- Account creation.
+- Contacts access.
+- Location access.
+- Microphone access.
+- Camera access.
+- Unnecessary background services.
+
+Do not collect personal information unnecessarily.
+
+Do not add analytics, advertising, or billing SDKs without implementing their required disclosures and policies.
+
+Create a privacy-policy screen or link when appropriate for the final release configuration.
+
+Prepare:
+
+- App name.
+- App icon.
+- Feature graphic.
+- Phone screenshots.
+- Short description.
+- Full description.
+- Content rating information.
+- Data safety declarations based on actual SDKs and data behavior.
+- Version name and version code.
+- Release signing configuration.
+- Android App Bundle output.
+- Testing instructions.
+
+Use the current Android SDK and Google Play target API requirements applicable at release time.
+
+Never commit signing keys, passwords, API keys, or private credentials to source control.
+
+Do not claim Play Store compliance without checking the actual app, its SDKs, permissions, and current policies.
+
+# 40. REQUIRED FIRST-RELEASE SCOPE
+
+Do not try to finish every advanced feature before producing a playable game.
+
+Build a complete, coherent first release with the following minimum scope:
+
+1. Main menu.
+2. Player profile.
+3. One playable dinosaur.
+4. One polished playable biome.
+5. Movement and collision.
+6. Camera following.
+7. Health, hunger, hydration, and stamina.
+8. Collectible resources.
+9. Functional inventory.
+10. Basic crafting.
+11. A simple shelter.
+12. At least eight tutorial or early-story objectives.
+13. At least three other wildlife behaviors.
+14. Basic predator AI.
+15. One combat or escape mechanic.
+16. Dinosaur XP and growth.
+17. A working egg discovery and hatching sequence.
+18. A collection screen with at least 12 species defined in the data model.
+19. A journal and quest tracker.
+20. Local persistence.
+21. Pause and resume.
+22. Settings.
+23. Audio controls.
+24. One mini-game.
+25. At least one environmental event.
+26. A basic sanctuary.
+27. A functioning reward system.
+28. A proper Android launch and lifecycle flow.
+
+Use placeholder content for locked features if necessary, but clearly label them as locked or planned.
+
+Prioritize the playable loop over the quantity of unfinished screens.
+
+# 41. DEVELOPMENT PHASES
+
+PHASE 1 — FOUNDATION
+
+- Create the Android project.
+- Configure Kotlin, Compose, and LibGDX.
+- Create the application navigation.
+- Establish the design system.
+- Create a working gameplay screen.
+- Add basic movement and camera follow.
+
+PHASE 2 — CORE GAMEPLAY
+
+- Add collision.
+- Add resources.
+- Add survival indicators.
+- Add inventory.
+- Add interaction prompts.
+- Add basic wildlife AI.
+
+PHASE 3 — PROGRESSION
+
+- Add XP.
+- Add dinosaur growth.
+- Add quests.
+- Add eggs.
+- Add collection screens.
+- Add rewards.
+
+PHASE 4 — WORLD
+
+- Create the first biome.
+- Add parallax.
+- Add weather.
+- Add a disaster event.
+- Add a map.
+- Add environmental storytelling.
+
+PHASE 5 — SANCTUARY
+
+- Add resource crafting.
+- Add shelter placement.
+- Add structure upgrades.
+- Add sanctuary persistence.
+
+PHASE 6 — POLISH
+
+- Add animations.
+- Add audio.
+- Add tutorial.
+- Add settings.
+- Add accessibility options.
+- Improve performance.
+
+PHASE 7 — TESTING
+
+- Test saving and loading.
+- Test repeated interactions.
+- Test low-health states.
+- Test inventory limits.
+- Test interrupted gameplay.
+- Test multiple screen sizes.
+- Test backgrounding and resuming.
+- Test application restart.
+- Fix all crashes and build errors.
+
+PHASE 8 — RELEASE
+
+- Prepare app icon and store artwork.
+- Configure release signing.
+- Generate the Android App Bundle.
+- Complete required testing.
+- Prepare Play Store listing materials.
+
+After every phase, make sure the project builds before proceeding.
+
+# 42. TESTING AND ACCEPTANCE CRITERIA
+
+The game is not complete simply because it compiles.
+
+Verify the following:
+
+GAMEPLAY
+
+- The player can move in all intended directions.
+- Collision works.
+- The camera follows correctly.
+- Collectibles can be collected once per valid spawn.
+- Survival indicators change correctly.
+- The player can recover using valid items.
+- The player can complete the tutorial.
+
+INVENTORY
+
+- Items are added correctly.
+- Item quantities cannot become negative.
+- Stack limits are enforced.
+- Consumed items are removed exactly once.
+- Crafting consumes the correct resources.
+
+PROGRESSION
+
+- XP is awarded correctly.
+- Level-ups happen at the correct threshold.
+- Growth stages unlock correctly.
+- Rewards cannot be claimed repeatedly.
+- Quest progress survives restarting the application.
+
+SAVING
+
+- Progress persists after force-closing and reopening.
+- Settings persist.
+- Inventory persists.
+- Discovered species persist.
+- Sanctuary placement persists.
+- Interrupted saves are handled safely.
+
+INTERFACE
+
+- Buttons perform their advertised actions.
+- Navigation works.
+- No screen is blank.
+- No placeholder button falsely reports success.
+- Text remains readable on small screens.
+- Gameplay controls remain accessible.
+
+PERFORMANCE
+
+- No unbounded entity spawning.
+- No obvious memory leaks.
+- No expensive disk writes every frame.
+- No unnecessary network dependency.
+- No unhandled crashes during lifecycle changes.
+
+RELEASE
+
+- Debug build works.
+- Release build works.
+- Signing is configured securely.
+- The App Bundle can be generated.
+- Release notes and store artwork can be prepared.
+
+Write unit tests for game rules and data repositories. Add automated UI tests for important Compose flows where practical.
+
+# 43. AI CODING WORKFLOW RULES
+
+Work directly in the Android project.
+
+Before implementation:
+
+1. Inspect the existing project.
+2. Identify the current architecture.
+3. Preserve working code where appropriate.
+4. Check installed SDKs and Gradle configuration.
+5. Identify any compatibility problems.
+
+During implementation:
+
+1. Create real source files.
+2. Implement actual state and logic.
+3. Connect screens to repositories.
+4. Use real game events.
+5. Use proper lifecycle management.
+6. Run builds and tests after meaningful changes.
+7. Fix errors rather than merely listing them.
+8. Avoid unnecessary rewrites.
+9. Do not leave core functionality as TODO comments.
+10. Keep dependencies and assets organized.
+
+If the project is empty, scaffold it.
+
+If the task is too large for one pass, implement the first-release scope in phases. Finish and test the current phase before adding the next one.
+
+Do not generate a huge amount of disconnected code that cannot compile together.
+
+When a feature requires an unavailable asset, create a clearly documented placeholder and implement the surrounding functionality.
+
+When a library API is uncertain, verify the installed version's actual API rather than inventing methods.
+
+At the end of each phase, report:
+
+- Files created or changed.
+- Features completed.
+- Build result.
+- Tests executed.
+- Known limitations.
+- Next implementation phase.
+
+# 44. FINAL DELIVERABLE
+
+Deliver a working Android Studio project for Dino Planet: Jurassic Survival.
+
+The project should include:
+
+- Complete Kotlin source code.
+- Jetpack Compose UI.
+- LibGDX gameplay renderer.
+- Modular game systems.
+- Organized assets.
+- Local database and save system.
+- Functional first-release gameplay.
+- Design system.
+- Reusable UI components.
+- Unit tests.
+- Build instructions.
+- Asset replacement documentation.
+- Release preparation instructions.
+
+The initial application must launch into a polished menu and allow the player to start, play, save, quit, and resume a real dinosaur adventure.
+
+The UI must look intentionally designed. Gameplay must work. Progression must persist. All core buttons must be functional.
+
+Do not claim that a feature is complete unless it is implemented and tested.
+
+Start by inspecting the project and implementing PHASE 1. Then continue through the phases in order, keeping the application buildable at every stage.
+
+The ultimate goal is a visually memorable, technically reliable, expandable dinosaur survival game suitable for an Android release on Google Play.
+
+## Additional design direction
+
+To help the coding AI produce a better result, use these principles alongside the master prompt:
+
+[Jurassic Island 2: Lost Ark Survival взлом (Мод много денег) на Андроид скачать](https://images.openai.com/static-rsc-4/w3TrprJQKlok1vMy8XbyKuOmjV39OJbR2sSM741zubHaQpzL4-LoGl2edYxj41wH3oqvuQh462XQjn-KvAhTcW2OShBj5PFSeL1wdX4txDvZ7sW79KjXun2q1cN2g_PXYhBfZOqTGyaNRgpHyajMGNcp33hkRO5BYOdAO3B20tY?purpose=inline)
+
+1\. Make gameplay the hero
+
+The main menu should look beautiful, but most development effort should go into the playable world, smooth controls, dinosaur animations, and meaningful interactions.
+
+[Cómo criar y evolucionar dinosaurios en Jurassic World Alive](https://images.openai.com/static-rsc-4/fUU6tCmnrNkOZMKVqF9M1M22-xx5MoaHncxgr3Pxtz9xlNn87IOWC_tXgbzbWbuzUQswBS43PnZ9hI44TnCFVgusEY7oXs_wDF_CUVtwzOhpb8HGwamaVDrJuweEcE9JP7uZJSzyTKqcUnwqKtF-SmsrNNlss3d-ZAOlqr8m0f8?purpose=inline)
+
+2\. Make collecting satisfying
+
+Use species cards, discovery animations, clear rarity labels, evolution previews, and visible collection progress to give players long-term goals.
+
+[Parkasaurus is a cute dino management game you might prefer to Jurassic World | PC Gamer](https://images.openai.com/static-rsc-4/nJpEE13sTUJqF1MUZVOyqSYCYnA9mUP4M_w995At0lwDDUJg5JN3_sHLbAHL8anvHArB0NFxikCtq-bHOXuW2Wn70zZVitOETLWT1sg8czc6S7nKARw05Y4A6eIfRDZIcvoSS5UshLQGjh1taH9lqK2L5W29nKrTt08fd7OqH9o?purpose=inline)
+
+3\. Make the world feel alive
+
+Moving plants, ambient creatures, weather, day/night transitions, and a sanctuary that changes as players upgrade it can make the experience feel much richer.
+
+## Recommended implementation order
+
+Even with this comprehensive prompt, do not ask an AI coding tool to build every feature in one enormous code-generation step. Use the master prompt as the project specification and implement the game incrementally.
+
+| Priority | What to complete                                |
+| -------- | ----------------------------------------------- |
+| 1        | Main menu, gameplay renderer, dinosaur movement |
+| 2        | World, camera, collision, and touch controls    |
+| 3        | Survival HUD, resources, and inventory          |
+| 4        | Quests, dinosaur growth, and eggs               |
+| 5        | Crafting, sanctuary, and persistence            |
+| 6        | More biomes, wildlife, weather, and disasters   |
+| 7        | Audio, animations, performance, and testing     |
+| 8        | Store assets and release build                  |
+
+Important technical note: Kotlin and Jetpack Compose are excellent for Android interfaces, but they are not a complete 3D game engine. The prompt therefore uses LibGDX for 2D/2.5D gameplay. If your goal is a fully 3D dinosaur game with free movement, detailed models, and a third-person camera, the rendering architecture will need to be upgraded accordingly.
+
+The strongest first release is a polished, playable dinosaur adventure with one excellent biome and a complete progression loop—not dozens of menus that look finished but do not work.

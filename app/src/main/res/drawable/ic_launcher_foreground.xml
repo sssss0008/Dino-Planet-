@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Dino Head & Crest -->
+    <path
+        android:fillColor="#FFC857"
+        android:pathData="M35,68 C38,56 46,46 55,40 C58,35 60,28 58,22 C64,22 72,25 78,32 C82,36 86,42 86,48 C86,52 82,55 76,57 C70,58 65,57 62,55 C59,58 55,62 52,66 C56,68 64,69 68,69 C70,69 71,71 69,73 C64,77 54,78 46,76 C41,75 37,74 35,68 Z" />
+    <!-- Eye -->
+    <path
+        android:fillColor="#FF793D"
+        android:pathData="M70,38 A3,3 0 1,1 70,44 A3,3 0 1,1 70,38" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M71,39 A1,1 0 1,1 71,41 A1,1 0 1,1 71,39" />
+    <!-- Teeth -->
+    <path
+        android:strokeColor="#12372B"
+        android:strokeWidth="1.2"
+        android:pathData="M75,56 L73,59 L71,56 L69,59 L67,56" />
+    <!-- Spines -->
+    <path
+        android:fillColor="#39B86A"
+        android:pathData="M58,22 L52,17 L57,25 L50,22 L55,30" />
+</vector>
